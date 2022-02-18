@@ -2,3 +2,14 @@
   margin: 0;
   padding: 0;
 }
+
+#color-palette {
+  display: flex;
+}
+
+.color, .pixel {
+  border: 1px solid black;
+  height: 40px;
+  margin: 2px;
+  width: 40px;
+}

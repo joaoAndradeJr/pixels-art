@@ -7,9 +7,26 @@
   display: flex;
 }
 
-.color, .pixel {
+#pixel-board {
+  display: table;
+}
+
+.linha {
+  display: table-row;
+}
+
+.color {
   border: 1px solid black;
   height: 40px;
   margin: 2px;
+  width: 40px;
+}
+
+.pixel {
+  background-color: white;
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: table-cell;
+  height: 40px;
   width: 40px;
 }

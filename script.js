@@ -22,10 +22,7 @@ function generateColorPallete() {
   pallete.firstChild.style.backgroundColor = 'black';
 }
 
-const createSquare = () => {
-  const div = document.createElement('div');
-  return div;
-};
+const createSquare = () => document.createElement('div');
 
 function createBoard(size) {
   const pixelBoard = document.getElementById('pixel-board');

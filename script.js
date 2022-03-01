@@ -24,7 +24,6 @@ function generateColorPallete() {
 
 const createSquare = () => {
   const div = document.createElement('div');
-  div.setAttribute('class', 'pixel');
   return div;
 };
 
@@ -38,6 +37,7 @@ function createBoard(size) {
       const line = document.querySelectorAll('.linha');
       line[index].appendChild(createSquare());
       line[index].children[index2].classList.add('pixel');
+      line[index].children[index2].style.backgroundColor = 'white';
     }
   }
 }

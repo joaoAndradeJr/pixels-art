@@ -1,3 +1,5 @@
+let selectedColor = 'black';
+
 function randomNumberFrom1To255() {
   const min = Math.ceil(0);
   const max = Math.floor(255);
@@ -11,18 +13,41 @@ function randomColor() {
   return `rgb(${r},${g},${b})`;
 }
 
+function cleanClass() {
+  const allPs = document.getElementsByTagName('p');
+  for (let index = 0; index < allPs.length; index += 1) {
+    allPs[index].className = 'color';
+  }
+}
+
+function changeSelectedColor(target) {
+  cleanClass();
+  const { backgroundColor } = target.style;
+  selectedColor = backgroundColor;
+  target.classList.add('selected');
+}
+
 function generateColorPallete() {
   const pallete = document.getElementById('color-palette');
-  for (let i = 0; i < 4; i += 1) {
+  for (let index = 0; index < 4; index += 1) {
     const p = document.createElement('p');
     p.setAttribute('class', 'color');
-    p.style.backgroundColor = randomColor();
+    const color = randomColor();
+    p.style.backgroundColor = color;
+    p.addEventListener('click', (event) => {
+      changeSelectedColor(event.target);
+    });
     pallete.appendChild(p);
   }
   pallete.firstChild.style.backgroundColor = 'black';
+  pallete.firstChild.classList.add('selected');
 }
 
 const createSquare = () => document.createElement('div');
+
+function changeBackgroundColor(target) {
+  target.style.backgroundColor = selectedColor;
+}
 
 function createBoard(size) {
   const pixelBoard = document.getElementById('pixel-board');
@@ -35,6 +60,9 @@ function createBoard(size) {
       line[index].appendChild(createSquare());
       line[index].children[index2].classList.add('pixel');
       line[index].children[index2].style.backgroundColor = 'white';
+      line[index].children[index2].addEventListener('click', (event) => {
+        changeBackgroundColor(event.target);
+      });
     }
   }
 }
